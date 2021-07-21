@@ -45,18 +45,6 @@ namespace MVVMTestBM.ViewModels
                 OnPropertyChanged();
             }
         }
-        //
-        private IBook _bookForSearch;
-
-        public IBook BookForSearch
-        {
-            get => _bookForSearch;
-            set
-            {
-                _bookForSearch = value;
-                OnPropertyChanged();
-            }
-        }
 
         private ICommand _addBookCommand;
         public ICommand AddBookCommand => _addBookCommand ??= new RelayCommand(AddBook);
@@ -81,15 +69,15 @@ namespace MVVMTestBM.ViewModels
         public ICommand FindBookCommand => _findBookCommand ??= new RelayCommand(FindBook);
         private void FindBook(object commandParameter)
         {
-            _bookService.Find(BookForSearch);
+            _bookService.Find(BookForEdit);
         }
 
         private ICommand _editBookCommand;
         //private RelayCommand editBookCommand;
-        public ICommand EditBookCommand => _editBookCommand ??= new RelayCommand(EditBook);
+        public ICommand EditBookCommand => _editBookCommand ??= new RelayCommand(EditBook, o => SelectedBook is not null);
         private void EditBook(object commandParameter)
         {
-            _bookService.Edit(BookForEdit);
+            _bookService.Edit(SelectedBook, BookForEdit);
         }
     }
 }

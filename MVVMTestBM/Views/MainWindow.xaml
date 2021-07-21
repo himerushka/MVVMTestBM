@@ -58,18 +58,11 @@
                     <TextBox Text="{Binding BookForEdit.Author}"/>
                 </StackPanel>
                 <StackPanel>
-                    <Button Content="Добавить" Command="{Binding AddBookCommand}"/>
-                    <Button Content="Редактировать" Command="{Binding EditBookCommand}"/>
+                    <Button Content="Добавить" Command="{Binding AddBookCommand}" Margin="0,2,0,2"/>
+                    <Button Content="Редактировать" Command="{Binding EditBookCommand}" Margin="0,2,0,2"/>
                     <!-- method Edit -->
-                    <Button Content="Удалить" Command="{Binding DeleteBookCommand}"/>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Поиск книги по названию:"  Margin="0,30,0,0"/>
-                    <TextBox Text="{Binding BookForSearch.Name}" Margin="0,0,0,0"/>
-                </StackPanel>
-                <StackPanel>
-                    <Button Content="Поиск" Command="{Binding FindBookCommand}"/>
-                    <!-- method Find -->
+                    <Button Content="Удалить" Command="{Binding DeleteBookCommand}" Margin="0,2,0,2"/>
+                    <Button Content="Поиск по названию" Command="{Binding FindBookCommand}" Margin="0,2,0,0"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

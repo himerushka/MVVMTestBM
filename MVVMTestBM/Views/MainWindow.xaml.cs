@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
 using MVVMTestBM.ViewModels;
-
 using System.Windows;
 
 namespace MVVMTestBM.Views
@@ -16,7 +15,9 @@ namespace MVVMTestBM.Views
             InitializeComponent();
 
             DataContext = App.ServiceProvider.GetRequiredService<MainViewModel>();
+
         }
+
 
     }
 }

@@ -44,30 +44,26 @@ namespace MVVMTestBM.Services
 
         public void Find(IBook book)
         {
-            //List<IBook> findingBook = (List<IBook>)_bookRepository.Books.SingleOrDefault(c => c.Name == book.Name);
-            //List<IBook> evens = _bookRepository.Books.Where(c => c.Name == book.Name);
-            /*if (findingBook is null)
-            {
-                MessageBox.Show("Книга не найдена.");
-                //return;
-                
-            } else
-            {
-                string res = "Книга " + findingBook.Name + " найдена. Автор: " + findingBook.Author;
-                MessageBox.Show(res);
-            } */
+            IBook foundBook = _bookRepository.Books.FirstOrDefault(c => c.Name == book.Name);
+            /* если бы книг было несколько
             var foundBooks = from books in _bookRepository.Books
                              where books.Name == book.Name
                              select books;
-            foreach (IBook foundBook in foundBooks)
+            foreach (IBook foundBook in foundBooks)*/
+            if (foundBook is not null)
+            {
                 MessageBox.Show($"Книга {foundBook.Name} найдена. Автор: {foundBook.Author}");
+            }
+            else MessageBox.Show("Книга не найдена.");
 
-            //_bookRepository.Books.Remove(bookToRemove);
         }
 
-        public void Edit(IBook book)
+        public void Edit(IBook selectedBook, IBook newBook)
         {
-            throw new System.NotImplementedException();
+            //IBook foundBook = _bookRepository.Books.FirstOrDefault(d => b.Id == book.Id);
+            int i = _bookRepository.Books.IndexOf(selectedBook);
+            _bookRepository.Books.ElementAt(i).Name = newBook.Name;
+            _bookRepository.Books.ElementAt(i).Author = newBook.Author;
         }
     }
 }
