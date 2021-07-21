@@ -14,7 +14,10 @@
         <ListView Grid.Column="0" 
                   ItemsSource="{Binding BookRepository.Books}" 
                   SelectedItem="{Binding SelectedBook}" 
-                  IsSynchronizedWithCurrentItem="True" Width="533">
+                  IsSynchronizedWithCurrentItem="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="82">
@@ -56,7 +59,17 @@
                 </StackPanel>
                 <StackPanel>
                     <Button Content="Добавить" Command="{Binding AddBookCommand}"/>
+                    <Button Content="Редактировать" Command="{Binding EditBookCommand}"/>
+                    <!-- method Edit -->
                     <Button Content="Удалить" Command="{Binding DeleteBookCommand}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Поиск книги по названию:"  Margin="0,30,0,0"/>
+                    <TextBox Text="{Binding BookForSearch.Name}" Margin="0,0,0,0"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Content="Поиск" Command="{Binding FindBookCommand}"/>
+                    <!-- method Find -->
                 </StackPanel>
             </StackPanel>
         </Grid>
