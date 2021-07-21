@@ -3,7 +3,10 @@ using MVVMTestBM.Models;
 using MVVMTestBM.Models.Interfaces;
 using MVVMTestBM.Repositories;
 using MVVMTestBM.Services.Interfaces;
+using System;
+using System.Collections.Specialized;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace MVVMTestBM.ViewModels
 {
@@ -78,6 +81,18 @@ namespace MVVMTestBM.ViewModels
         private void EditBook(object commandParameter)
         {
             _bookService.Edit(SelectedBook, BookForEdit);
+        }
+
+        private void ListView_Loaded(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 3); // 3s
+            timer.Tick += new EventHandler(RandomBook);
+            timer.Start();
+        }
+        private void RandomBook(object sender, EventArgs e)
+        {
+            _bookService.RandomEvent();
         }
     }
 }

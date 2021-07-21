@@ -8,5 +8,6 @@ namespace MVVMTestBM.Services.Interfaces
         public void Delete(IBook book);
         public void Find(IBook book);
         public void Edit(IBook book, IBook newbook);
+        public void RandomEvent();
     }
 }

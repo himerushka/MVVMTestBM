@@ -11,13 +11,14 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" 
+        <ListView Grid.Column="0" x:Name="BookList"
                   ItemsSource="{Binding BookRepository.Books}" 
                   SelectedItem="{Binding SelectedBook}" 
                   IsSynchronizedWithCurrentItem="True"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
                   ScrollViewer.CanContentScroll="True"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="82">

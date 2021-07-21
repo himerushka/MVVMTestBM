@@ -1,6 +1,7 @@
 ﻿using MVVMTestBM.Models.Interfaces;
 using MVVMTestBM.Repositories;
 using MVVMTestBM.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -64,6 +65,20 @@ namespace MVVMTestBM.Services
             int i = _bookRepository.Books.IndexOf(selectedBook);
             _bookRepository.Books.ElementAt(i).Name = newBook.Name;
             _bookRepository.Books.ElementAt(i).Author = newBook.Author;
+        }
+
+        public void RandomEvent()
+        {
+            Random rand = new Random();
+            int index = rand.Next(0,_bookRepository.Books.Count);
+            if (index % 2 == 0 && _bookRepository.Books.Count>3)
+            {
+                _bookRepository.Books.RemoveAt(index);
+            }
+            else
+            {
+                _bookRepository.Books.ElementAt(index).Name += "lose";
+            }
         }
     }
 }

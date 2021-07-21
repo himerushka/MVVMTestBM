@@ -6,7 +6,6 @@ using MVVMTestBM.Repositories;
 using MVVMTestBM.Services;
 using MVVMTestBM.Services.Interfaces;
 using MVVMTestBM.ViewModels;
-using System.Windows.Threading;
 
 namespace MVVMTestBM
 {
@@ -35,7 +34,9 @@ namespace MVVMTestBM
 
         public static IServiceProvider ServiceProvider { get; private set; }
 
-        public void StartRandomEvent()
+
+
+       /*public void StartRandomEvent()
         {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(timer_Tick);
@@ -45,7 +46,6 @@ namespace MVVMTestBM
 
         private void timer_Tick(object sender, EventArgs e) // random action every 3 seconds
         {
-            _bookRepository.Books.
-        }
+        }*/
     }
 }
